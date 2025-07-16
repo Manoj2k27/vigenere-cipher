@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vigenère Cipher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid green;
+      background: #f0fff0;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Vigenere Cipher</h2>
+
+  <!-- Mode selection -->
+  <label><input type="radio" name="mode" value="manual" checked onchange="toggleMode()"> Manual Input</label>
+  <label><input type="radio" name="mode" value="file" onchange="toggleMode()"> File Upload</label>
+
+  <!-- Manual Input Section -->
+  <div id="manualInputSection">
+    <label for="inputText">Enter Plaintext / Ciphertext:</label>
+    <textarea id="inputText" rows="5" placeholder="Enter your message here..."></textarea>
+
+    <label for="key">Enter Key:</label>
+    <input type="text" id="key" placeholder="Enter key for encryption/decryption" />
+
+    <div>
+      <button onclick="encrypt()">Encrypt</button>
+      <button onclick="decrypt()">Decrypt</button>
+    </div>
+  </div>
+
+  <!-- File Upload Section (hidden by default) -->
+  <div id="fileInputSection" style="display: none;">
+    <label for="fileInput">Upload .txt File (with PLAINTEXT/CIPHERTEXT and KEY):</label>
+    <input type="file" id="fileInput" accept=".txt" />
+
+    <div>
+      <button onclick="encryptFromFile()">Encrypt</button>
+      <button onclick="decryptFromFile()">Decrypt</button>
+    </div>
+  </div>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+  <button onclick="downloadResult()">Download Result</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
